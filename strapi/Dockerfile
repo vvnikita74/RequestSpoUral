@@ -1,23 +1,19 @@
-FROM node:18
-
-RUN apt-get update && apt-get upgrade -y && apt-get install libvips-dev -y 
-
+FROM node:18-alpine
+# Installing libvips-dev for sharp Compatibility
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
 ARG NODE_ENV=development
-
 ENV NODE_ENV=${NODE_ENV}
 
+WORKDIR /opt/
+COPY package.json package-lock.json ./
+RUN npm install -g node-gyp
+RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install
+ENV PATH /opt/node_modules/.bin:$PATH
+
 WORKDIR /opt/app
-
-COPY ./package.json ./package-lock.json ./
-
-RUN npm install
-
-ENV PATH /opt/app/node_modules/.bin:$PATH
-
 COPY . .
-
-RUN npm run build
-
+RUN chown -R node:node /opt/app
+USER node
+RUN ["npm", "run", "build"]
 EXPOSE 1337
-
-CMD ["npm", "run", "develop", "--debug"]     
+CMD ["npm", "run", "develop"]
