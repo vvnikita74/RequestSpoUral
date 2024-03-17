@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  strapi:
+    build: ./strapi
+    env_file: 
+      - ./.env
+    volumes:
+      - ./strapi:/usr/src/app # Путь к каталогу Strapi
+    ports:
+      - "1337:1337" # Порт Strapi
+
+  nginx:
+    build: 
+      context: ./nginx
+    # volumes:
+    #   - ./nginx/nginx-http-config:/etc/nginx/sites-available/default # Подключение конфига Nginx
+    ports:
+      - "80:80" # HTTP
+      # - "443:443" # HTTPS
+    depends_on:
+      - strapi
