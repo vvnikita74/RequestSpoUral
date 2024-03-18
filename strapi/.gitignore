@@ -102,6 +102,7 @@ coverage
 # Strapi
 ############################
 
+.tmp
 license.txt
 exports
 .strapi
