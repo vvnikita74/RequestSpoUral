@@ -1,0 +1,45 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Check for changes in /next
+        id: check-next
+        uses: tj-actions/changed-files@v23
+        with:
+          files: |
+            next/**
+
+      - name: Reload Frontend
+        if: steps.check-next.outputs.files_changed == 'true'
+        run: ./reload_front.sh
+
+      - name: Check for changes in /strapi
+        id: check-strapi
+        uses: tj-actions/changed-files@v23
+        with:
+          files: |
+            strapi/**
+
+      - name: Reload Backend
+        if: steps.check-strapi.outputs.files_changed == 'true'
+        run: ./reload_back.sh
+
+      - name: Check for changes in /nginx
+        id: check-nginx
+        uses: tj-actions/changed-files@v23
+        with:
+          files: |
+            nginx/**
+
+      - name: Reload Nginx
+        if: steps.check-nginx.outputs.files_changed == 'true'
+        run: ./reload_nginx.sh
