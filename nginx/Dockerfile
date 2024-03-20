@@ -15,5 +15,6 @@ COPY ./certs/privkey.pem /etc/ssl/
 WORKDIR /usr/share/nginx/html
 
 
-EXPOSE 80 443
+EXPOSE 80 
+EXPOSE 443
 CMD ["nginx", "-g", "daemon off;"]
