@@ -20,7 +20,7 @@ jobs:
 
       - name: Reload Frontend
         if: steps.check-next.outputs.any_changed == 'true'
-        run: ./reload_front.sh
+        run: ./scripts/reload_front.sh
 
       - name: Check for changes in /strapi
         id: check-strapi
@@ -31,7 +31,7 @@ jobs:
 
       - name: Reload Backend
         if: steps.check-strapi.outputs.any_changed == 'true'
-        run: ./reload_back.sh
+        run: ./scripts/reload_back.sh
 
       - name: Check for changes in /nginx
         id: check-nginx
@@ -42,4 +42,4 @@ jobs:
 
       - name: Reload Nginx
         if: steps.check-nginx.outputs.any_changed == 'true'
-        run: ./reload_nginx.sh
+        run: ./scripts/reload_nginx.sh
