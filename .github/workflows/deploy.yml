@@ -11,44 +11,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Make scripts executable
-        run: |
-          chmod +x ./scripts/reload_front.sh
-          chmod +x ./scripts/reload_back.sh
-          chmod +x ./scripts/reload_nginx.sh
-
-      - name: Check for changes in /next
-        id: check-next
-        uses: tj-actions/changed-files@v43
+      - name: Setup SSH and Run Scripts on Server
+        uses: appleboy/ssh-action@master
         with:
-          files: |
-            next/**
-
-      - name: Reload Frontend
-        if: steps.check-next.outputs.any_changed == 'true'
-        run: |
-          sh ./scripts/reload_front.sh
-
-      - name: Check for changes in /strapi
-        id: check-strapi
-        uses: tj-actions/changed-files@v43
-        with:
-          files: |
-            strapi/**
-
-      - name: Reload Backend
-        if: steps.check-strapi.outputs.any_changed == 'true'
-        run: |
-          sh ./scripts/reload_back.sh
-
-      - name: Check for changes in /nginx
-        id: check-nginx
-        uses: tj-actions/changed-files@v43
-        with:
-          files: |
-            nginx/**
-
-      - name: Reload Nginx
-        if: steps.check-nginx.outputs.any_changed == 'true'
-        run: |
-          sh ./scripts/reload_nginx.sh
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /root/applications/RequestSpoUral
+            if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'next/'; then
+              sh scripts/reload_front.sh
+            fi
+            if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'strapi/'; then
+              sh scripts/reload_back.sh
+            fi
+            if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'nginx/'; then
+              sh scripts/reload_nginx.sh
+            fi
