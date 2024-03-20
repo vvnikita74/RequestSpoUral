@@ -24,4 +24,4 @@ ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 
 # Запуск приложения
-CMD ["sh", "-c", "npm install && npm run build && npm run dev"]
+CMD ["sh", "-c", "npm install && npm run build && npm run start"]
