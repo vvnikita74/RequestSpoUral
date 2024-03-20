@@ -13,9 +13,9 @@ jobs:
       
       - name: Make scripts executable
         run: |
-          chmod +x ./reload_front.sh
-          chmod +x ./reload_back.sh
-          chmod +x ./reload_nginx.sh
+          chmod +x ./scripts/reload_front.sh
+          chmod +x ./scripts/reload_back.sh
+          chmod +x ./scripts/reload_nginx.sh
 
       - name: Check for changes in /next
         id: check-next
