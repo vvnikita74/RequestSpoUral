@@ -11,6 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - name: Make scripts executable
+        run: |
+          chmod +x ./reload_front.sh
+          chmod +x ./reload_back.sh
+          chmod +x ./reload_nginx.sh
+
       - name: Check for changes in /next
         id: check-next
         uses: tj-actions/changed-files@v43
