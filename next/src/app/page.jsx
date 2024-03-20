@@ -1,3 +1,3 @@
 export default function Home() {
-  return (<>SPO URAL HERE</>)
+  return (<>SPO URAL HERE YE</>)
 }
