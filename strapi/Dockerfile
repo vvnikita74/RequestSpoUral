@@ -4,7 +4,7 @@ RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev l
 RUN addgroup -S nodejs && adduser -S nodejs -G nodejs
 
 # ARG NODE_ENV=production
-ARG NODE_ENV=development
+ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /opt/
