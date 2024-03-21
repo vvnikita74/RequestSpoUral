@@ -1,5 +1,6 @@
 import '@/styles/app.sass'
 
+
 export const metadata = {
   title: 'Оставить заявку. СПО-Урал',
   manifest: '/site.webmanifest'
