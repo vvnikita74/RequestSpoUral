@@ -19,6 +19,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /root/applications/RequestSpoUral
+            git pull
             if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'next/'; then
               sh scripts/reload_front.sh
             fi
