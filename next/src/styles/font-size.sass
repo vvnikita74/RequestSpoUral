@@ -1,0 +1,12 @@
+@mixin responsiveFont ($default_size, $notebook_size, $tablet_size, $mobile_size)
+  font-size: $default_size
+  @media(max-width: 1600px)
+    font-size: $notebook_size
+  @media(max-width: 1024px)
+    font-size: $tablet_size
+  @media(max-width: 590px)
+    font-size: $mobile_size
+
+h1
+  @include responsiveFont (32px, 29rem, 30rem, 18rem)
+  

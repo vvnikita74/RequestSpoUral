@@ -1,0 +1,42 @@
+*
+  box-sizing: border-box
+  padding: 0
+  margin: 0
+
+html, body
+  -ms-overflow-style: none
+  scrollbar-width: none
+
+html
+  @media(max-width: 1600px)
+    font-size: calc(100vw / 1440)
+  @media(max-width: 1024px)
+    font-size: calc(100vw / 1024)
+  @media(max-width: 590px)
+    font-size: calc(100vw / 375)
+
+body
+  max-width: 1440px
+  margin: 0 auto
+  padding: 20px
+
+a
+  color: inherit
+  text-decoration: none
+  transition: var(--animationTransition)
+  cursor: pointer
+
+button, input
+  box-shadow: none
+  border: none
+  background: none
+  appearance: none
+  outline: none
+  white-space: nowrap
+
+.img-wrapper
+  display: flex
+  img
+    object-fit: cover
+    width: 100%
+    height: auto
