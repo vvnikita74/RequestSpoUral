@@ -12,5 +12,5 @@ export default function RootLayout({ children }) {
     <html lang="ru">
       <body>{children}</body>
     </html>
-  );
+  )
 }
