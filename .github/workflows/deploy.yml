@@ -20,12 +20,18 @@ jobs:
           script: |
             cd /root/applications/RequestSpoUral
             git pull
+            chmod +x /scripts/reload_front.sh
+            chmod +x /scripts/reload_back.sh
+            chmod +x /scripts/reload_nginx.sh
             if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'next/'; then
+              echo "Reloading next..."
               sh scripts/reload_front.sh
             fi
             if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'strapi/'; then
+              echo "Reloading strapi..."
               sh scripts/reload_back.sh
             fi
             if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'nginx/'; then
+              echo "Reloading nginx..."
               sh scripts/reload_nginx.sh
             fi
