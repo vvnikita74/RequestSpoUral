@@ -16,9 +16,14 @@ html
     font-size: calc(100vw / 375)
 
 body
-  max-width: 1440px
+  max-width: 1200px
   margin: 0 auto
   padding: 20px
+  display: flex
+  flex-direction: column
+  gap: 40px
+  @media(max-width: 1024px)
+    gap: 20px
 
 a
   color: inherit
