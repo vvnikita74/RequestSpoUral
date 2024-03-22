@@ -1,2 +1,2 @@
-docker-compose build --no-cache next
+docker-compose build next
 docker-compose up -d next

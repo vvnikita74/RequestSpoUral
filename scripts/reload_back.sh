@@ -1,2 +1,2 @@
-docker-compose build --no-cache strapi
+docker-compose build strapi
 docker-compose up -d strapi
