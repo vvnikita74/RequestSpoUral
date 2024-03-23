@@ -2,15 +2,15 @@
 import { useContext } from 'react'
 import DataContext from '@/components/context/data-context'
 import ServiceChoice from '@/components/atoms/service-choice'
-import InputManager from '@/components/inputs/input-manager'
+import Form from '@/components/form'
 
 
-export default function FormManager ({types}) {
+export default function Manager ({types}) {
 
   const { service } = useContext(DataContext)
 
   if (service) { 
-    return (<InputManager inputs={service?.inputs}/>)
+    return (<Form inputs={service?.inputs}/>)
   }
 
   return (<ServiceChoice types={types}/>)

@@ -1,4 +1,4 @@
-import FormManager from "@/components/form-manager";
+import Manager from "@/components/manager";
 import Header from "@/components/header";
 import { getTypes } from "@/utils/requests";
 
@@ -10,7 +10,7 @@ export default async function Home() {
     <>
       <Header/>
       <main>
-        <FormManager types={types}/>
+        <Manager types={types}/>
       </main>
     </>
   )
