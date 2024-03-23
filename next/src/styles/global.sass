@@ -7,6 +7,14 @@ html, body
   -ms-overflow-style: none
   scrollbar-width: none
 
+button, input
+  box-shadow: none
+  border: none
+  background: none
+  appearance: none
+  outline: none
+  white-space: nowrap
+
 html
   @media(max-width: 1600px)
     font-size: calc(100vw / 1440)
@@ -42,14 +50,6 @@ a
   @media(min-width: 590px)
     &:hover
       opacity: 1
-
-button, input
-  box-shadow: none
-  border: none
-  background: none
-  appearance: none
-  outline: none
-  white-space: nowrap
 
 .img-wrapper
   display: flex

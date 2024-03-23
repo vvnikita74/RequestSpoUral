@@ -3,6 +3,7 @@
 import CreateFieldObject from '@/utils/create-fields-object'
 import createYupSchema from '@/utils/create-yup-schema'
 import { useFormik } from 'formik'
+import InputManager from '@/components/inputs/input-manager'
 
 
 
@@ -26,6 +27,7 @@ export default function Form ({inputs}) {
     {inputs.map((item) => (
       <div className="input-container flex flex-col" key={item.label}>
         <label>{item.label}</label>
+        <InputManager input={item} formik={formik}/>
       </div>
     ))}
     </form>

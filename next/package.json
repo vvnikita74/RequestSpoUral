@@ -17,8 +17,9 @@
     "react-inlinesvg": "latest",
     "sass": "latest",
     "sharp": "latest",
-    "yup": "^1.4.0",
-    "react-number-format": "latest"
+    "yup": "latest",
+    "react-number-format": "latest",
+    "react-input-mask": "latest"
   },
   "devDependencies": {
     "eslint": "^8.57.0",

@@ -19,7 +19,7 @@ export default function createYupSchema (fields) {
     if (field.regExp) validator = validator.matches(`/${field.regExp}/`, 'Введите корректное значение')
     if (field.isRequired) validator = validator.required('Обязательное поле')
     
-    schema[field.label] = validator
+    schema[field.bitrixKey] = validator
 
   })
 

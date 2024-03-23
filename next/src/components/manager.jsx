@@ -1,7 +1,7 @@
 'use client'
 import { useContext } from 'react'
 import DataContext from '@/components/context/data-context'
-import ServiceChoice from '@/components/atoms/service-choice'
+import ServiceChoice from '@/components/organisms/service-choice'
 import Form from '@/components/form'
 
 

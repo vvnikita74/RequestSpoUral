@@ -6,7 +6,7 @@ export default function CreateFieldObject (inputs) {
 
     switch (item.__component) {
       case 'inputs.select': obj[item.label] = item.isMultiple ? [] : ''
-      default: obj[item.label] = ''
+      default: obj[item.bitrixKey] = ''
     }
 
   })
