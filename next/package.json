@@ -18,7 +18,6 @@
     "sass": "latest",
     "sharp": "latest",
     "yup": "^1.4.0",
-    "react-input-mask": "latest",
     "react-number-format": "latest"
   },
   "devDependencies": {

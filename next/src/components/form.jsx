@@ -19,12 +19,16 @@ export default function Form ({inputs}) {
     onSubmit: () => {}
   })
 
+  console.log(inputs)
+
   return (
-    inputs.map((item, index) => (
-      <div className="input-container" key={item.label}>
-        <label></label>
+    <form onSubmit={formik.handleSubmit} className='flex flex-col'>
+    {inputs.map((item) => (
+      <div className="input-container flex flex-col" key={item.label}>
+        <label>{item.label}</label>
       </div>
-    ))
+    ))}
+    </form>
   )
 
 }

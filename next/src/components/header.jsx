@@ -13,7 +13,7 @@ export default function Header () {
       <div className="img-wrapper">
         <Image src='/images/logo.webp' width={150} height={150} alt="СПО-Урал"/>    
       </div>
-      <h1>{service ? service.name : 'Оставить заявку'}</h1>
+      <h1 style={{textAlign: 'right'}}>{service ? service.name : 'Оставить заявку'}</h1>
     </header>
   )
 }
