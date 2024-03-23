@@ -1,0 +1,26 @@
+.service-choice-container
+  height: 100%
+  .service-choice-wrapper
+    gap: 40px
+  .service-list
+    gap: 20px
+    @media(max-width: 590px)
+      gap: 40px
+  .service-card
+    gap: 5px
+  .service-link
+    svg
+      width: 7%
+      max-width: 30px
+      height: auto
+      color: var(--mainColor)
+    @media(min-width: 590px)
+      transition: var(--animationTransition)
+      svg
+        transition: var(--animationTransition)
+      &:hover
+        opacity: .69
+        svg
+          color: var(--greenColor)
+        
+      

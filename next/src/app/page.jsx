@@ -1,18 +1,16 @@
-import Image from "next/image"
+import ServiceChoice from "@/components/service-choice";
+import Header from "@/components/header";
+import { getTypes } from "@/utils/requests";
 
+export default async function Home() {
 
-export default function Home() {
+  const types = await getTypes()
+
   return (
     <>
-      <header className="flex flex-row justify-between items-center">
-        <div className="img-wrapper">
-          <Image src='/images/logo.webp' width={150} height={150} alt="СПО-Урал"/>    
-        </div>
-        <h1>Оставить заявку</h1>
-      </header>
+      <Header/>
       <main>
-        <div className="container flex">
-        </div>
+        <ServiceChoice types={types}/>
       </main>
     </>
   )

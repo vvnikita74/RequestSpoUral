@@ -22,14 +22,25 @@ body
   display: flex
   flex-direction: column
   gap: 40px
+  height: 100vh
   @media(max-width: 1024px)
     gap: 20px
+  @media(max-width: 590px)
+    gap: 40px
+
+main 
+  height: 100%
 
 a
   color: inherit
-  text-decoration: none
-  transition: var(--animationTransition)
+  text-decoration: underline
+  text-decoration-skip-ink: none
+  opacity: .69
+  transition: opacity 0.3s var(--animationFunction)
   cursor: pointer
+  @media(min-width: 590px)
+    &:hover
+      opacity: 1
 
 button, input
   box-shadow: none
