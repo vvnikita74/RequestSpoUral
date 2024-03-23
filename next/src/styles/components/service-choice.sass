@@ -1,7 +1,12 @@
 .service-choice-container
   height: 100%
+  justify-content: center
+  @media(max-width: 590px)
+    justify-content: flex-start
   .service-choice-wrapper
     gap: 40px
+    @media(max-width: 590px)
+      width: 100%
   .service-list
     gap: 20px
     @media(max-width: 590px)
