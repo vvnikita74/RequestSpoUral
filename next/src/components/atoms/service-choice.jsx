@@ -1,16 +1,14 @@
 'use client'
-import { useState } from 'react'
+import { useContext } from 'react'
 import Link from 'next/link'
 import InlineSvg from 'react-inlinesvg'
+import DataContext from '@/components/context/data-context'
 
 export default function ServiceChoice ({types}) {
 
-  const [service, setService] = useState(null)
+  const { setService } = useContext(DataContext)
 
   return (
-    service ? 
-    <div className="container flex flex-row">
-    </div> :
     <div className="service-choice-container flex flex-col items-center">
       <div className="service-choice-wrapper flex flex-col">
         <h2>Выберите интересующую вас услугу</h2>

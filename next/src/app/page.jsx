@@ -1,4 +1,4 @@
-import ServiceChoice from "@/components/service-choice";
+import FormManager from "@/components/form-manager";
 import Header from "@/components/header";
 import { getTypes } from "@/utils/requests";
 
@@ -10,7 +10,7 @@ export default async function Home() {
     <>
       <Header/>
       <main>
-        <ServiceChoice types={types}/>
+        <FormManager types={types}/>
       </main>
     </>
   )
