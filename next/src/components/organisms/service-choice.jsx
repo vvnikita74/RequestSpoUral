@@ -11,7 +11,7 @@ export default function ServiceChoice ({types}) {
   return (
     <div className="service-choice-container flex flex-col items-center">
       <div className="service-choice-wrapper flex flex-col">
-        <h2>Выберите интересующую вас услугу</h2>
+        <h2>Выберите интересующую Вас услугу</h2>
         <div className="flex flex-col service-list">
           {Array.isArray(types) && types.map((item, index) => (
             <div className="flex flex-col service-card" key={index}>
