@@ -19,14 +19,18 @@ h3
   font-weight: 500
   @include responsiveFont (24px, 24rem, 24rem, 15rem)
 
-label, input
+label
   font-weight: 500
   @include responsiveFont (21px, 19rem, 21rem, 13rem)
 
-a
+input, .inherit-input-font
+  font-weight: 300
+  @include responsiveFont (21px, 19rem, 21rem, 13rem)
+
+a, .inherit-a-font
   font-weight: 300
   @include responsiveFont (18px, 16rem, 18rem, 12rem)
 
-p
+p, .inherit-p-font
   font-weight: 300
-  @include responsiveFont (18px, 16rem, 18rem, 12rem)
+  @include responsiveFont (16px, 14rem, 16rem, 10rem)

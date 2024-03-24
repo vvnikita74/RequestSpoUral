@@ -16,7 +16,7 @@ export default function createYupSchema (fields) {
 
     if (field.minNumberOfCharacters) validator = validator.min(field.minNumberOfCharacters, `Минимальное количество символов ${field.minNumberOfCharacters}`)
     if (field.maxNumberOfCharacters) validator = validator.max(field.maxNumberOfCharacters, `Минимальное количество символов ${field.maxNumberOfCharacters}`)
-    if (field.regExp) validator = validator.matches(`/${field.regExp}/`, 'Введите корректное значение')
+    if (field.regExp) validator = validator.matches(`${field.regExp}`, 'Введите корректное значение')
     if (field.isRequired) validator = validator.required('Обязательное поле')
     
     schema[field.bitrixKey] = validator

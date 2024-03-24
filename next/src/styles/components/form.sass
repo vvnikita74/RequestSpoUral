@@ -1,7 +1,26 @@
+.instruction-container
+  gap: 10px
+  margin-bottom: 40px
+  @media(max-width: 1024px)
+    margin-bottom: 20px
+  
 .input-wrapper
   position: relative
   width: fit-content
   .error
     position: absolute
     right: 0
-    top: 0
+    top: -20px
+    color: red
+  input
+    &:focus
+      border-bottom-color: rgba(0, 109, 172, 1)
+
+form 
+  gap: 30px
+  .input-container
+    gap: 25px
+    input
+      transition: var(--animationTransition)
+      padding-bottom: 5px
+      border-bottom: 1px solid rgba(0, 109, 172, 0.3)
