@@ -1,5 +1,10 @@
-export default function String ({input, formik}) {
+export default function String ({input, formik, children}) {
   return (
-    <input/>
+    <div className="input-wrapper">
+      <input name={input.bitrixKey} id={input.bitrixKey}
+        onChange={formik.handleChange} onBlur={formik.handleBlur}
+        placeholder={input.placeholder || ''} value={formik.values.bitrixKey}/>
+      {children}
+    </div>
   )
 }
