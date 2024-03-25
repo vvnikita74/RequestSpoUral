@@ -5,11 +5,6 @@
     margin-bottom: 20px
   > div
     gap: 10px
-  .back-btn
-    cursor: pointer
-    transition: var(--animationTransition)
-    &:hover
-      opacity: .69
   
 .input-wrapper
   position: relative
@@ -23,6 +18,41 @@
     &:focus
       border-bottom-color: rgba(0, 109, 172, 1)
 
+
+.file-btn-wrapper, .back-btn
+  color: white
+  background-color: var(--mainColor)
+  width: fit-content
+  cursor: pointer
+  padding: 7px
+  transition: var(--animationTransition)
+  @media(max-width: 590px)
+    svg
+      width: 25px
+      height: auto
+  @media(min-width: 591px)
+    &:hover
+      background-color: var(--greenColor)
+
+
+.file-choice-container
+  gap: 15px
+  .file-wrapper
+    gap: 10px
+    @media(min-width: 591px)
+      svg
+        transition: var(--animationTransition)
+        cursor: pointer
+        &:hover
+          color: red
+    p
+      cursor: pointer
+    .file-btn
+      color: white
+      cursor: pointer
+
+
+
 .option
   transition: var(--animationTransition)
   gap: 10px
@@ -32,10 +62,11 @@
     border: 2px solid var(--mainColor)
     padding: 6px
     transition: var(--animationTransition)
-  &:hover
-    color: var(--greenColor)
-    .circle
-      border-color: var(--greenColor)
+  @media(min-width: 591px)
+    &:hover
+      color: var(--greenColor)
+      .circle
+        border-color: var(--greenColor)
   &.selected
     color: var(--greenColor)
     .circle
@@ -48,6 +79,8 @@ form
   gap: 30px
   .input-container
     gap: 25px
+    @media(max-width: 590px)
+      gap: 15px
     input
       transition: var(--animationTransition)
       padding-bottom: 5px

@@ -20,10 +20,12 @@ export default function Manager ({types}) {
     return (
       <>
       <div className="instruction-container flex flex-col">
-        <p className='flex flex-row items-center cursor-pointer back-btn inherit-a-font' onClick={() => {setService(null)}}>
-          Назад
-          <InlineSVG src='/icons/arrow-left.svg' width={35} height={25} strokeWidth={1}/>
-        </p>
+        <div className="flex justify-end">
+          <button type='button' className='flex flex-row items-center cursor-pointer back-btn inherit-a-font' onClick={() => {setService(null)}}>
+            К выбору услуг
+            <InlineSVG src='/icons/arrow-left.svg' width={35} height={25} strokeWidth={2}/>
+          </button>
+        </div>
         <p className='inherit-a-font'>Мы ценим ваше время и&nbsp;стремимся обеспечить быструю и&nbsp;эффективную обработку заявок. Пожалуйста, заполняйте все&nbsp;поля в&nbsp;форме максимально корректно и&nbsp;полно. Это позволит Вам&nbsp;избежать дополнительных уточнений и&nbsp;сократить время на&nbsp;обработку вашей заявки.</p>
         <p style={{color: 'red'}} className='inherit-a-font'>Поля,&nbsp;помеченные&nbsp;{'"*"'},&nbsp;являются обязательными к&nbsp;заполнению</p>
       </div>
