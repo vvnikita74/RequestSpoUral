@@ -3,6 +3,13 @@
   margin-bottom: 40px
   @media(max-width: 1024px)
     margin-bottom: 20px
+  > div
+    gap: 10px
+  .back-btn
+    cursor: pointer
+    transition: var(--animationTransition)
+    &:hover
+      opacity: .69
   
 .input-wrapper
   position: relative
@@ -15,6 +22,27 @@
   input
     &:focus
       border-bottom-color: rgba(0, 109, 172, 1)
+
+.option
+  transition: var(--animationTransition)
+  gap: 10px
+  .circle
+    content: ""
+    border-radius: 50%
+    border: 2px solid var(--mainColor)
+    padding: 6px
+    transition: var(--animationTransition)
+  &:hover
+    color: var(--greenColor)
+    .circle
+      border-color: var(--greenColor)
+  &.selected
+    color: var(--greenColor)
+    .circle
+      border-color: var(--greenColor)
+      background-color: var(--greenColor)
+
+
 
 form 
   gap: 30px
