@@ -4,6 +4,8 @@
 import { useFormik } from 'formik'
 import InputManager from '@/components/inputs/input-manager'
 import { motion } from 'framer-motion'
+import { getOriginalImageUrl } from '@/utils/get-image-url'
+import Link from 'next/link'
 
 
 export default function Form ({inputs, fields, validationSchema}) {
@@ -22,6 +24,7 @@ export default function Form ({inputs, fields, validationSchema}) {
         <div className="input-container flex flex-col" key={item.label}>
           <label className='flex flex-row items-center' style={{gap: '5px'}}>
             {item.label}{item.isRequired ? <span style={{fontSize: 'inherit', fontWeight: 'inherit', color: 'red'}}> * </span> : <></>}
+            {item?.file?.data && <Link href={getOriginalImageUrl(item.file)} target='_blank' alt='Ссылка на файл' className='inherit-label-font'>{`(${item.filename || "Ссылка"})`}</Link>}
             {formik.errors[item.bitrixKey] && formik.touched[item.bitrixKey] && 
               <motion.span
                 initial={{opacity: 0}}
