@@ -6,6 +6,7 @@ import InputManager from '@/components/inputs/input-manager'
 import { motion } from 'framer-motion'
 import { getOriginalImageUrl } from '@/utils/get-image-url'
 import Link from 'next/link'
+import InlineSVG from 'react-inlinesvg'
 
 
 export default function Form ({inputs, fields, validationSchema}) {
@@ -22,7 +23,7 @@ export default function Form ({inputs, fields, validationSchema}) {
     <form onSubmit={formik.handleSubmit} className='flex flex-col'>
       {inputs.map((item) => (
         <div className="input-container flex flex-col" key={item.label}>
-          <label className='flex flex-row items-center' style={{gap: '5px'}}>
+          <label className='flex flex-row items-center flex-wrap' style={{gap: '5px'}}>
             {item.label}{item.isRequired ? <span style={{fontSize: 'inherit', fontWeight: 'inherit', color: 'red'}}> * </span> : <></>}
             {item?.file?.data && <Link href={getOriginalImageUrl(item.file)} target='_blank' alt='Ссылка на файл' className='inherit-label-font'>{`(${item.filename || "Ссылка"})`}</Link>}
             {formik.errors[item.bitrixKey] && formik.touched[item.bitrixKey] && 
@@ -38,6 +39,10 @@ export default function Form ({inputs, fields, validationSchema}) {
           <InputManager input={item} formik={formik}/>
         </div>
       ))}
+      <button type='submit' className="flex flex-row items-center" style={{alignSelf: 'flex-end'}}>
+        <p className='inherit-input-font'>Отправить заявку</p>
+        <InlineSVG src='/icons/upload.svg' width={30} height={20}/>
+      </button>
     </form>
   )
 

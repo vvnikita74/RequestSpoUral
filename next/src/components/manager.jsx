@@ -22,7 +22,7 @@ export default function Manager ({types}) {
       <>
       <div className="instruction-container flex flex-col">
         <div className="flex justify-end">
-          <button type='button' className='flex flex-row items-center cursor-pointer back-btn inherit-a-font' onClick={() => {setService(null)}}>
+          <button type='button' className='flex flex-row items-center cursor-pointer inherit-a-font' onClick={() => {setService(null)}}>
             К выбору услуг
             <InlineSVG src='/icons/arrow-left.svg' width={35} height={25} strokeWidth={2}/>
           </button>

@@ -30,9 +30,9 @@ export default function File ({input, formik}) {
         </div>
       ))}
       {(input.isMultiple || formik.values[input.bitrixKey].length !== 1) && 
-      <button type='button' className="file-btn-wrapper flex flex-row items-center" style={{gap: '10px'}} onClick={handleButtonClick}>
+      <button type='button' className="flex flex-row items-center" onClick={handleButtonClick}>
         <p className="inherit-input-font">{`Выбрать ${input.isMultiple ? 'файлы' : 'файл'}`}</p>
-        <InlineSVG src="/icons/file-upload.svg" width={25} height={25}/>
+        <InlineSVG src="/icons/file-upload.svg" width={30} height={25}/>
       </button>
       }
     </div>

@@ -19,20 +19,23 @@
       border-bottom-color: rgba(0, 109, 172, 1)
 
 
-.file-btn-wrapper, .back-btn
+button
   color: white
   background-color: var(--mainColor)
   width: fit-content
   cursor: pointer
   padding: 7px
+  gap: 5px
   transition: var(--animationTransition)
   @media(max-width: 590px)
     svg
-      width: 25px
+      width: 20px
       height: auto
   @media(min-width: 591px)
     &:hover
       background-color: var(--greenColor)
+  &:disabled
+    background-color: grey
 
 
 .file-choice-container
