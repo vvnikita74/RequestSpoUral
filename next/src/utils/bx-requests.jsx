@@ -4,11 +4,13 @@ import { clearNumber, getFullName } from "@/utils/string-processing"
 // Configuration
 
 const serviceKEY = "UF_CRM_1606385150474"
+const contactKEY = "CONTACT_ID"
+const statusKEY = "STATUS_ID"
 
 const statusID = "UC_K2T2MM"
 
 // IMPORTANT. The service ID is inserted as an array
-const serviceID = {
+const servicesID = {
   "Проект организации демонтажа": 252,
   "Техническое обследование здания": 60,
   "Лазерное сканирование": 1352,
@@ -60,11 +62,47 @@ export async function contactProcessing (fullName, phoneValue) {
     res = await req.json()
     return res.result
 
-  } catch (error) {console.log(error); return null}
+  } catch (error) {return null}
 
 }
 
 // Lead creating
-export async function createLead (valuesObj) {
-  return null
+export async function createLead (valuesObj, filesKey, service) {
+
+  try {
+    // extracting contact fields
+    const { PHONE, NAME, ...rest} = valuesObj
+
+    // creating contact
+    const contactID = await contactProcessing(NAME, PHONE)
+
+    // extracting files fields
+    const filesObj = {}
+    for (let i = 0; i < filesKey.length; i++) {
+      const item = filesKey[i]
+      filesObj[item] = rest[item]
+      delete rest[item]
+    }
+
+    // inserting additional data
+    rest[statusKEY] = statusID
+    rest[serviceKEY] = servicesID[service]
+    rest[contactKEY] = contactID
+
+    // creating lead
+    const req = await fetch(`${process.env.BX_URL}/crm.lead.add`, {
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify({
+        "fields": {
+          ...resObj
+        }
+      })
+    })
+
+    const res = await req.json()
+
+    return true
+
+  } catch (error) {return false}
 }

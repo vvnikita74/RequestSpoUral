@@ -7,16 +7,30 @@ import { motion } from 'framer-motion'
 import { getOriginalImageUrl } from '@/utils/get-image-url'
 import Link from 'next/link'
 import InlineSVG from 'react-inlinesvg'
+import { createLead } from '@/utils/bx-requests'
+import { useContext } from 'react'
+import DataContext from '@/components/context/data-context'
 
 
-export default function Form ({inputs, fields, validationSchema}) {
+const submitFunction = async (values, filesKey, service) => {
+
+  const res = await createLead(values, filesKey, service)
+
+}
+
+
+
+
+export default function Form ({inputs, fields, validationSchema, filesKey}) {
 
   if (!Array.isArray(inputs)) return (<></>)
+  
+  const { service } = useContext(DataContext)
 
   const formik = useFormik({
     initialValues: fields,
     validationSchema: validationSchema,
-    onSubmit: () => {}
+    onSubmit: (values) => {submitFunction(values, filesKey, service.name)}
   })
 
   return (

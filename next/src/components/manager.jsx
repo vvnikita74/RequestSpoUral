@@ -16,7 +16,7 @@ export default function Manager ({types}) {
   if (service) {
 
     const validationSchema = createYupSchema(service?.inputs)
-    const fields = createFieldObject(service?.inputs)
+    const { fields, filesKey } = createFieldObject(service?.inputs)
 
     return (
       <>
@@ -31,7 +31,7 @@ export default function Manager ({types}) {
         <p className='inherit-a-font'>Вы всегда можете задать вопрос по заполнению, связавшись с нами по номеру телефону: <Link href='tel:88005502707'>{"8-(800)-550-27-07"}</Link></p>
         <p style={{color: 'red'}} className='inherit-a-font'>Поля,&nbsp;помеченные&nbsp;{'"*"'},&nbsp;являются обязательными к&nbsp;заполнению</p>
       </div>
-      <Form inputs={service?.inputs} validationSchema={validationSchema} fields={fields}/>
+      <Form inputs={service?.inputs} validationSchema={validationSchema} fields={fields} filesKey={filesKey}/>
       </>
     )
   }

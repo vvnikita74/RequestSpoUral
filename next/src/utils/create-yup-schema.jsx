@@ -10,11 +10,9 @@ export default function createYupSchema (fields) {
     switch (field.__component) {
       case 'inputs.string': validator = Yup.string(); break
       case 'inputs.number': validator = Yup.number(); break
-      case 'inputs.select': validator = Yup.array(); break
+      case 'inputs.select': validator = field.isMultiple ? Yup.array() : Yup.string(); break
       case 'inputs.file': validator = Yup.array(); break
     }
-
-    console.log(field, validator)
 
     if (field.minNumberOfCharacters) validator = validator.min(field.minNumberOfCharacters, `Минимальное количество символов ${field.minNumberOfCharacters}`)
     if (field.maxNumberOfCharacters) validator = validator.max(field.maxNumberOfCharacters, `Минимальное количество символов ${field.maxNumberOfCharacters}`)
