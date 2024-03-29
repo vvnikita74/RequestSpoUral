@@ -25,7 +25,7 @@ export async function contactProcessing (fullName, phoneValue) {
   let req
   let res
 
-  const { surname, name, secondName } = getName(fullName)
+  const { surname, name, secondName } = getFullName(fullName)
   const phone = clearNumber(phoneValue)
 
   try {
@@ -62,4 +62,9 @@ export async function contactProcessing (fullName, phoneValue) {
 
   } catch (error) {console.log(error); return null}
 
+}
+
+// Lead creating
+export async function createLead (valuesObj) {
+  return null
 }
