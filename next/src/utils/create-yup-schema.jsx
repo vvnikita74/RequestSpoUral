@@ -15,7 +15,9 @@ export default function createYupSchema (fields) {
     }
 
     if (field.minNumberOfCharacters) validator = validator.min(field.minNumberOfCharacters, `Минимальное количество символов ${field.minNumberOfCharacters}`)
-    if (field.maxNumberOfCharacters) validator = validator.max(field.maxNumberOfCharacters, `Минимальное количество символов ${field.maxNumberOfCharacters}`)
+    if (field.maxNumberOfCharacters) validator = validator.max(field.maxNumberOfCharacters, `Максимальное количество символов ${field.maxNumberOfCharacters}`)
+    if (field.minValue) validator = validator.min(field.minValue, `Минимальное значение ${field.minValue}`)
+    if (field.maxValue) validator = validator.max(field.maxValue, `Максимальное значение ${field.maxValue}`)
     if (field.regExp) validator = validator.matches(`${field.regExp}`, 'Введите корректное значение')
     if (field.isRequired) validator = (field.__component !== 'inputs.select' && field.__component !== 'inputs.file') ? validator.required('Обязательное поле') : validator.min(1, 'Обязательное поле')
     
