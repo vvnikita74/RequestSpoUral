@@ -39,7 +39,6 @@ body
     height: fit-content
     min-height: 100svh
 
-
 main
   height: 100%
 
@@ -60,3 +59,24 @@ a
     object-fit: cover
     width: 100%
     height: auto
+
+.circle-loader
+  width: 20rem
+  height: 20rem
+  span
+    width: 20rem
+    height: 20rem
+    border: 3px solid white
+    border-top: 3px solid black
+  @media(min-width: 1601px)
+    width: 25px
+    height: 25px
+    span
+      width: 25px
+      height: 25px
+  @media(max-width: 590px)
+    width: 15rem
+    height: 15rem
+    span
+      width: 15rem
+      height: 15rem

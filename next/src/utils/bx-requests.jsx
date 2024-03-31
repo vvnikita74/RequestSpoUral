@@ -1,13 +1,15 @@
+"use server"
+
 import { clearNumber, getFullName } from "@/utils/string-processing"
 
 
 // Configuration
+const contactKEY = "CONTACT_ID"
+
+const statusKEY = "STATUS_ID"
+const statusID = "UC_K2T2MM"
 
 const serviceKEY = "UF_CRM_1606385150474"
-const contactKEY = "CONTACT_ID"
-const statusKEY = "STATUS_ID"
-
-const statusID = "UC_K2T2MM"
 
 // IMPORTANT. The service ID is inserted as an array
 const servicesID = {
@@ -16,10 +18,6 @@ const servicesID = {
   "Лазерное сканирование": 1352,
   "Признание дома аварийным": 254
 }
-
-
-
-// Requests
 
 // A contact is created when there is no existing one. Returning contact_ID
 export async function contactProcessing (fullName, phoneValue) {
@@ -67,26 +65,19 @@ export async function contactProcessing (fullName, phoneValue) {
 }
 
 // Lead creating
-export async function createLead (valuesObj, filesKey, service) {
-
+export async function createLead (valuesObj, service) {
   try {
+
     // extracting contact fields
     const { PHONE, NAME, ...rest} = valuesObj
 
     // creating contact
     const contactID = await contactProcessing(NAME, PHONE)
-
-    // extracting files fields
-    const filesObj = {}
-    for (let i = 0; i < filesKey.length; i++) {
-      const item = filesKey[i]
-      filesObj[item] = rest[item]
-      delete rest[item]
-    }
-
+    if (!contactID) throw new Error('contact is missing')
+  
     // inserting additional data
     rest[statusKEY] = statusID
-    rest[serviceKEY] = servicesID[service]
+    rest[serviceKEY] = [servicesID[service]]
     rest[contactKEY] = contactID
 
     // creating lead
@@ -95,14 +86,12 @@ export async function createLead (valuesObj, filesKey, service) {
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
         "fields": {
-          ...resObj
+          ...rest
         }
       })
     })
 
-    const res = await req.json()
+    return req.status === 200
 
-    return true
-
-  } catch (error) {return false}
+  } catch (error) {console.log(error); return false}
 }
