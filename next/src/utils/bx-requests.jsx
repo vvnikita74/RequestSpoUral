@@ -93,5 +93,5 @@ export async function createLead (valuesObj, service) {
 
     return req.status === 200
 
-  } catch (error) {console.log(error); return false}
+  } catch (error) {return false}
 }

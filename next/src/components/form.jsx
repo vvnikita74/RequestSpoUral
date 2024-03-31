@@ -11,6 +11,7 @@ import { useContext, useState } from 'react'
 import DataContext from '@/components/context/data-context'
 import CircleLoader from '@/components/atoms/circle-loader'
 import { createLead } from '@/utils/bx-requests'
+import { extractFiles } from '@/utils/obj-processing'
 
 
 export default function Form ({inputs, validationSchema, fields, filesKey}) {
@@ -28,18 +29,14 @@ export default function Form ({inputs, validationSchema, fields, filesKey}) {
     const valuesObj = { ...values }
     
     // extracting files fields
-    const filesObj = {}
-    for (let i = 0; i < filesKey.length; i++) {
-      const item = filesKey[i]
-      filesObj[item] = valuesObj[item]
-      delete valuesObj[item]
-    }
+    const fileObj = extractFiles(valuesObj, filesKey)
+    // TODO: file processing
 
     try {
 
       setIsLoading(true)
 
-      const isLeadCreated = await createLead(valuesObj, filesKey, service.name)
+      const isLeadCreated = await createLead(valuesObj, service.name)
 
       if (isLeadCreated) {
         setIsLoading(false)
