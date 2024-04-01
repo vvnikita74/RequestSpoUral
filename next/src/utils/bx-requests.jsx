@@ -91,7 +91,8 @@ export async function createLead (valuesObj, service) {
       })
     })
 
-    return req.status === 200
+    const res = await req.json()
+    return res.result
 
-  } catch (error) {return false}
+  } catch (error) {return -1}
 }

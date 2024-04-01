@@ -12,6 +12,7 @@ import DataContext from '@/components/context/data-context'
 import CircleLoader from '@/components/atoms/circle-loader'
 import { createLead } from '@/utils/bx-requests'
 import { extractFiles } from '@/utils/obj-processing'
+import { createCommentary } from '@/utils/file-processing'
 
 
 export default function Form ({inputs, validationSchema, fields, filesKey}) {
@@ -26,21 +27,46 @@ export default function Form ({inputs, validationSchema, fields, filesKey}) {
 
   const submitFunction = async (values) => {
 
+    setIsLoading(true)
+
     const valuesObj = { ...values }
     
     // extracting files fields
     const fileObj = extractFiles(valuesObj, filesKey)
-    // TODO: file processing
+
+    // files processing
+    for (let key of Object.keys(fileObj)) {
+      // getting binary strings for files
+      const filesPromises = fileObj[key].map(async (file) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader()
+          reader.onload = (event) => {resolve({
+            fileName: file.name,
+            fileString: event.target.result})
+          }
+          reader.onerror = (error) => reject(error)
+          reader.readAsBinaryString(file)
+        })
+      })
+    
+      const binaryStrings = await Promise.all(filesPromises);
+      fileObj[key] = binaryStrings
+    }
 
     try {
 
-      setIsLoading(true)
+      const leadId = await createLead(valuesObj, service.name)
+      
+      if (leadId > 0) {
 
-      const isLeadCreated = await createLead(valuesObj, service.name)
+        const isCommentary = await createCommentary(fileObj, leadId, valuesObj, inputs)
+        if (!isCommentary) throw new Error('server error')
 
-      if (isLeadCreated) {
         setIsLoading(false)
         setIsSuccess(true)
+
+      } else {
+        throw new Error('server error')
       }
 
     }
