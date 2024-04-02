@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_inputs_strings",
+  "info": {
+    "displayName": "string",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "isRequired": {
+      "type": "boolean",
+      "default": true
+    },
+    "minNumberOfCharacters": {
+      "type": "integer"
+    },
+    "maxNumberOfCharacters": {
+      "type": "integer"
+    },
+    "regExp": {
+      "type": "string"
+    },
+    "bitrixKey": {
+      "type": "string",
+      "required": true
+    },
+    "mask": {
+      "type": "string"
+    },
+    "placeholder": {
+      "type": "string"
+    }
+  }
+}

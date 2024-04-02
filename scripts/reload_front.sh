@@ -1,2 +1,2 @@
-docker-compose build next
-docker-compose up -d next
+docker-compose build requestspoural_next
+docker-compose up -d requestspoural_next

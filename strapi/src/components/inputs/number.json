@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_inputs_numbers",
+  "info": {
+    "displayName": "number",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "minValue": {
+      "type": "integer"
+    },
+    "maxValue": {
+      "type": "integer"
+    },
+    "bitrixKey": {
+      "type": "string",
+      "required": true
+    },
+    "placeholder": {
+      "type": "string"
+    }
+  }
+}

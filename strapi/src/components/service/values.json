@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_service_values",
+  "info": {
+    "displayName": "values",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
