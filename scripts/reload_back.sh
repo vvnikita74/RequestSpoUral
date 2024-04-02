@@ -1,2 +1,2 @@
-docker-compose build requestspoural_strapi
-docker-compose up -d requestspoural_strapi
+docker-compose build strapi
+docker-compose up -d strapi
