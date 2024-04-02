@@ -29,8 +29,4 @@ jobs:
               echo "Reloading strapi..."
               sh scripts/reload_back.sh
             fi
-            if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'nginx/'; then
-              echo "Reloading nginx..."
-              sh scripts/reload_nginx.sh
-            fi
             sh scripts/clean_up.sh
