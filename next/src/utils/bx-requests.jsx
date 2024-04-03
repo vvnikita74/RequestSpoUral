@@ -71,6 +71,13 @@ export async function createLead (valuesObj, service) {
     // extracting contact fields
     const { PHONE, NAME, ...rest} = valuesObj
 
+    // array processing
+    for (let key of Object.keys(rest)) {
+      if (Array.isArray(rest[key])) {
+        rest[key] = rest[key].join(', ')
+      }
+    }
+
     // creating contact
     const contactID = await contactProcessing(NAME, PHONE)
     if (!contactID) throw new Error('contact is missing')
