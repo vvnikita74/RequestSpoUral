@@ -25,6 +25,7 @@ html
     font-size: calc(100vw / 375)
 
 body
+  position: relative
   max-width: 1200px
   margin: 0 auto
   padding: 20px
@@ -52,6 +53,11 @@ a
   @media(min-width: 590px)
     &:hover
       opacity: 1
+
+.bottom-container
+  position: absolute
+  left: 20px
+  bottom: 20px
 
 .img-wrapper
   display: flex

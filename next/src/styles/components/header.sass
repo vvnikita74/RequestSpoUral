@@ -1,6 +1,7 @@
 header
   gap: 5px
   .img-wrapper
+    opacity: 1
     img
       width: 180px
       max-width: 180px
@@ -10,4 +11,7 @@ header
         width: 17vw
       @media(max-width: 590px)
         width: 27vw
+    @media(min-width: 591px)
+      &:hover
+        opacity: .69
   
