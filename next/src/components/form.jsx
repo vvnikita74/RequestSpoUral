@@ -71,6 +71,7 @@ export default function Form ({inputs, validationSchema, fields, filesKey}) {
 
     }
     catch (error) {
+      console.log('FORM ERROR', error)
       setIsLoading(false)
       alert('Ошибка создания заявки. Пожалуйста, попробуйте еще раз')
     }

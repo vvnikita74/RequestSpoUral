@@ -46,5 +46,5 @@ export async function createCommentary (filesObj, leadId, valuesObj, inputs) {
 
     return true
 
-  } catch (error) {return false}
+  } catch (error) {console.log('COMMENT UPLOAD', error); return false}
 }

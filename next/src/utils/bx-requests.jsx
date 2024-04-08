@@ -101,5 +101,5 @@ export async function createLead (valuesObj, service) {
     const res = await req.json()
     return res.result
 
-  } catch (error) {return -1}
+  } catch (error) {console.log('LEAD ERROR', error); return -1}
 }
