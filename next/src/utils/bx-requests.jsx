@@ -20,7 +20,7 @@ const servicesID = {
 }
 
 // A contact is created when there is no existing one. Returning contact_ID
-export async function contactProcessing (fullName, phoneValue) {
+export async function contactProcessing (fullName, phoneValue, email) {
 
   let req
   let res
@@ -52,7 +52,8 @@ export async function contactProcessing (fullName, phoneValue) {
           "NAME": name,
           "LAST_NAME": surname,
           "SECOND_NAME": secondName,
-          "PHONE": [ {"VALUE_TYPE": "WORK", "VALUE": phone}]
+          "PHONE": [ {"VALUE_TYPE": "WORK", "VALUE": phone}],
+          "EMAIL": [ {"VALUE_TYPE": "WORK", "VALUE": email}]
         }
       })
     })
@@ -69,7 +70,7 @@ export async function createLead (valuesObj, service) {
   try {
 
     // extracting contact fields
-    const { PHONE, NAME, ...rest} = valuesObj
+    const { PHONE, NAME, EMAIL, ...rest} = valuesObj
 
     // array processing
     for (let key of Object.keys(rest)) {
@@ -79,7 +80,7 @@ export async function createLead (valuesObj, service) {
     }
 
     // creating contact
-    const contactID = await contactProcessing(NAME, PHONE)
+    const contactID = await contactProcessing(NAME, PHONE, EMAIL)
     if (!contactID) throw new Error('contact is missing')
   
     // inserting additional data
